@@ -1,4 +1,4 @@
-# My First Website
+# Informal Capital
 
 A starter site in plain HTML and CSS, hosted on GitHub Pages.
 
