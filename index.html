@@ -23,24 +23,8 @@
   <main>
     <section id="portfolio">
       <h2>Portfolio</h2>
-      <div class="cards">
-        <a class="card" href="https://antiburn.com/" target="_blank" rel="noopener">
-          <h3>Antiburn</h3>
-          <span class="link">antiburn.com &rarr;</span>
-        </a>
-        <a class="card" href="https://www.calendar.software/" target="_blank" rel="noopener">
-          <h3>Calendar.Software</h3>
-          <span class="link">calendar.software &rarr;</span>
-        </a>
-        <a class="card" href="https://explorescience.ai/" target="_blank" rel="noopener">
-          <h3>Explore Science</h3>
-          <span class="link">explorescience.ai &rarr;</span>
-        </a>
-        <a class="card" href="https://www.garuda.vc/" target="_blank" rel="noopener">
-          <h3>Garuda Ventures</h3>
-          <span class="link">garuda.vc &rarr;</span>
-        </a>
-      </div>
+      <!-- Cards are built from portfolio.json. To add a company, add a line there. -->
+      <div class="cards" id="portfolio-list"></div>
     </section>
 
     <section id="contact">
@@ -52,5 +36,31 @@
   <footer>
     <p>&copy; 2026 Informal Capital</p>
   </footer>
+  <script>
+    // Reads portfolio.json and builds one card per company.
+    // Each link opens in a new tab (target="_blank").
+    fetch('portfolio.json')
+      .then(res => res.json())
+      .then(companies => {
+        const list = document.getElementById('portfolio-list');
+        // Sort A to Z by name, ignoring upper/lower case,
+        // so the order in portfolio.json doesn't matter.
+        companies.sort((a, b) => a.name.localeCompare(b.name, 'en-AU', { sensitivity: 'base' }));
+        companies.forEach(c => {
+          const a = document.createElement('a');
+          a.className = 'card';
+          a.href = c.url;
+          a.target = '_blank';
+          a.rel = 'noopener';
+          const h3 = document.createElement('h3');
+          h3.textContent = c.name;
+          a.appendChild(h3);
+          list.appendChild(a);
+        });
+      })
+      .catch(() => {
+        document.getElementById('portfolio-list').textContent = 'Portfolio could not be loaded.';
+      });
+  </script>
 </body>
 </html>

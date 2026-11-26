@@ -78,8 +78,7 @@ h2 { font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; colo
   transition: border-color 0.2s;
 }
 .card:hover { border-color: var(--muted); }
-.card h3 { margin: 0 0 0.5rem; }
-.card .link { color: var(--muted); font-size: 0.9rem; }
+.card h3 { margin: 0; }
 
 footer {
   text-align: center;
