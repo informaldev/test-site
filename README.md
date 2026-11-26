@@ -18,4 +18,4 @@ Open `portfolio.json` and add a line in the same format (mind the commas):
 { "name": "Company Name", "url": "https://company.com/" }
 ```
 
-Commit the change. The site updates in about a minute.
+Add it anywhere in the list: the site sorts companies A to Z automatically. Commit the change and the site updates in about a minute.

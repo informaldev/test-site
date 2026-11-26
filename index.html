@@ -43,6 +43,9 @@
       .then(res => res.json())
       .then(companies => {
         const list = document.getElementById('portfolio-list');
+        // Sort A to Z by name, ignoring upper/lower case,
+        // so the order in portfolio.json doesn't matter.
+        companies.sort((a, b) => a.name.localeCompare(b.name, 'en-AU', { sensitivity: 'base' }));
         companies.forEach(c => {
           const a = document.createElement('a');
           a.className = 'card';
